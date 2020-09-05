@@ -3,7 +3,7 @@ import torch.nn as nn
 from torch.nn import init
 import functools
 from torch.optim import lr_scheduler
-from models.spectral_norm import spectral_norm
+from nucleisegmentation.models.spectral_norm import spectral_norm
 
 ###############################################################################
 # Helper Functions

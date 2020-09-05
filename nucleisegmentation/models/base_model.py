@@ -1,7 +1,7 @@
 import os
 import torch
 from collections import OrderedDict
-from . import networks
+from nucleisegmentation.models import networks
 
 
 class BaseModel():

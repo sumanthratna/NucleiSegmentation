@@ -8,6 +8,7 @@ import os
 # Converts a Tensor into an image array (numpy)
 # |imtype|: the desired type of the converted numpy array
 def tensor2im(input_image, imtype=np.uint8):
+    print(input_image)
     if isinstance(input_image, torch.Tensor):
         image_tensor = input_image.data
     else:

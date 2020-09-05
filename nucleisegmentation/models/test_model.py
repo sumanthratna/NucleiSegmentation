@@ -1,6 +1,6 @@
-from .base_model import BaseModel
-from . import networks
-from .cycle_gan_model import CycleGANModel
+from nucleisegmentation.models.base_model import BaseModel
+from nucleisegmentation.models import networks
+from nucleisegmentation.models.cycle_gan_model import CycleGANModel
 
 
 class TestModel(BaseModel):

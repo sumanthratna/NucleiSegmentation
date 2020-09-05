@@ -1,9 +1,9 @@
 import os
-from options.test_options import TestOptions
-from data import CreateDataLoader
-from models import create_model
-from util.visualizer import save_images
-from util import html
+from nucleisegmentation.options.test_options import TestOptions
+from nucleisegmentation.data import CreateDataLoader
+from nucleisegmentation.models import create_model
+from nucleisegmentation.util.visualizer import save_images
+from nucleisegmentation.util import html
 
 
 if __name__ == '__main__':
@@ -18,18 +18,24 @@ if __name__ == '__main__':
     model = create_model(opt)
     model.setup(opt)
     # create website
-    web_dir = os.path.join(opt.results_dir, opt.name, '%s_%s' % (opt.phase, opt.which_epoch))
-    webpage = html.HTML(web_dir, 'Experiment = %s, Phase = %s, Epoch = %s' % (opt.name, opt.phase, opt.which_epoch))
+    web_dir = os.path.join(opt.results_dir, opt.name,
+                           '%s_%s' % (opt.phase, opt.which_epoch))
+    webpage = html.HTML(web_dir, 'Experiment = %s, Phase = %s, Epoch = %s' % (
+        opt.name, opt.phase, opt.which_epoch))
     # test
     for i, data in enumerate(dataset):
         if i >= opt.how_many:
             break
         model.set_input(data)
         model.test()
+        print('fake b')
+        print(model.fake_B)
+        print(model.fake_B.shape)
         visuals = model.get_current_visuals()
         img_path = model.get_image_paths()
         if i % 5 == 0:
             print('processing (%04d)-th image... %s' % (i, img_path))
-        save_images(webpage, visuals, img_path, aspect_ratio=opt.aspect_ratio, width=opt.display_winsize)
+        save_images(webpage, visuals, img_path,
+                    aspect_ratio=opt.aspect_ratio, width=opt.display_winsize)
 
     webpage.save()

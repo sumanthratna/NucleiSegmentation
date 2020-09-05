@@ -1,7 +1,7 @@
 import torch
-from util.image_pool import ImagePool
-from .base_model import BaseModel
-from . import networks
+from nucleisegmentation.util.image_pool import ImagePool
+from nucleisegmentation.models.base_model import BaseModel
+from nucleisegmentation.models import networks
 
 
 class Pix2PixModel(BaseModel):

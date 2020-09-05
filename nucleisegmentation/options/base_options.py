@@ -1,9 +1,9 @@
 import argparse
 import os
-from util import util
+from nucleisegmentation.util import util
 import torch
-import models
-import data
+from nucleisegmentation import models
+from nucleisegmentation import data
 
 
 class BaseOptions():
